@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/auth';
 import { connectDB } from '@/lib/mongodb';
 import Progress from '@/models/Progress';
 import SavedCode from '@/models/SavedCode';
@@ -10,7 +11,13 @@ import Batch from '@/models/Batch';
  * Body: { batches, progress, code }
  */
 export async function POST(req: NextRequest) {
+  const session = await auth();
+  if (!session?.user?.email) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   await connectDB();
+  const userId = session.user.email;
 
   const { batches, progress, code } = await req.json();
 
@@ -33,7 +40,7 @@ export async function POST(req: NextRequest) {
   if (progress && Array.isArray(progress)) {
     for (const item of progress) {
       await Progress.findOneAndUpdate(
-        { batchId: item.batchId, topicSlug: item.topicSlug },
+        { userId, batchId: item.batchId, topicSlug: item.topicSlug },
         { completed: true, completedAt: new Date() },
         { upsert: true }
       );
@@ -45,7 +52,7 @@ export async function POST(req: NextRequest) {
   if (code && Array.isArray(code)) {
     for (const item of code) {
       await SavedCode.findOneAndUpdate(
-        { batchId: item.batchId, topicSlug: item.topicSlug },
+        { userId, batchId: item.batchId, topicSlug: item.topicSlug },
         {
           partSlug: item.partSlug || '',
           moduleSlug: item.moduleSlug || '',

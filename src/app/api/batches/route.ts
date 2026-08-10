@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/auth';
 import { connectDB } from '@/lib/mongodb';
 import Batch from '@/models/Batch';
 
 // GET /api/batches — get all batches
 export async function GET() {
+  const session = await auth();
+  if (!session?.user?.email) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   await connectDB();
   const batches = await Batch.find().sort({ createdAt: 1 });
 
@@ -16,6 +22,11 @@ export async function GET() {
 
 // POST /api/batches — create a new batch
 export async function POST(req: NextRequest) {
+  const session = await auth();
+  if (!session?.user?.email) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   await connectDB();
   const { name } = await req.json();
 
@@ -36,6 +47,11 @@ export async function POST(req: NextRequest) {
 
 // DELETE /api/batches?batchId=xxx — delete a batch
 export async function DELETE(req: NextRequest) {
+  const session = await auth();
+  if (!session?.user?.email) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   await connectDB();
   const batchId = req.nextUrl.searchParams.get('batchId');
 

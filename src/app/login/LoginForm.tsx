@@ -1,54 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 
 export default function LoginForm() {
-  const [mode, setMode] = useState<'login' | 'signup'>('login');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
-
-    if (mode === 'signup') {
-      // Create account first
-      const res = await fetch('/api/auth/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error || 'Signup failed');
-        setLoading(false);
-        return;
-      }
-    }
-
-    // Sign in with credentials
-    const result = await signIn('credentials', {
-      email,
-      password,
-      redirect: false,
-    });
-
-    // NextAuth v5 beta: check result.ok for success
-    if (result?.ok) {
-      window.location.href = '/';
-      return;
-    }
-
-    setError(mode === 'signup' ? 'Account created! Please sign in now.' : 'Invalid email or password');
-    if (mode === 'signup') setMode('login');
-    setLoading(false);
-  };
-
   const handleGoogle = () => {
     signIn('google', { callbackUrl: '/' });
   };
@@ -60,10 +14,10 @@ export default function LoginForm() {
         <div className="text-center mb-6">
           <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-lg font-bold text-white mx-auto mb-4">M</div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-            {mode === 'login' ? 'Welcome back' : 'Create account'}
+            Welcome to MentorDesk
           </h1>
           <p className="text-sm text-gray-500 mt-1">
-            {mode === 'login' ? 'Sign in to MentorDesk' : 'Join MentorDesk'}
+            Sign in to continue
           </p>
         </div>
 
@@ -81,65 +35,6 @@ export default function LoginForm() {
           </svg>
           Continue with Google
         </button>
-
-        {/* Divider */}
-        <div className="flex items-center gap-3 my-5">
-          <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
-          <span className="text-xs text-gray-400">or</span>
-          <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
-        </div>
-
-        {/* Email Form */}
-        <form onSubmit={handleSubmit} className="space-y-3">
-          {mode === 'signup' && (
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Full name"
-              required
-              className="w-full px-4 py-2.5 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-            />
-          )}
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email address"
-            required
-            className="w-full px-4 py-2.5 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-          />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            required
-            minLength={6}
-            className="w-full px-4 py-2.5 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-          />
-
-          {error && (
-            <p className="text-xs text-red-500 text-center">{error}</p>
-          )}
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full px-4 py-2.5 text-sm font-semibold text-white bg-blue-600 rounded-xl hover:bg-blue-500 disabled:opacity-50 transition-colors"
-          >
-            {loading ? 'Please wait...' : mode === 'login' ? 'Sign In' : 'Create Account'}
-          </button>
-        </form>
-
-        {/* Toggle */}
-        <p className="text-center text-sm text-gray-500 mt-5">
-          {mode === 'login' ? (
-            <>Don&apos;t have an account? <button onClick={() => { setMode('signup'); setError(''); }} className="text-blue-600 font-medium hover:underline">Sign up</button></>
-          ) : (
-            <>Already have an account? <button onClick={() => { setMode('login'); setError(''); }} className="text-blue-600 font-medium hover:underline">Sign in</button></>
-          )}
-        </p>
       </div>
     </div>
   );

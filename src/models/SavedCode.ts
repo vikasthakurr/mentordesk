@@ -1,6 +1,7 @@
 import mongoose, { Schema, model, models } from 'mongoose';
 
 export interface ISavedCode {
+  userId: string;
   batchId: string;
   topicSlug: string;
   partSlug: string;
@@ -13,7 +14,8 @@ export interface ISavedCode {
 }
 
 const SavedCodeSchema = new Schema<ISavedCode>({
-  batchId: { type: String, required: true, index: true },
+  userId: { type: String, required: true },
+  batchId: { type: String, required: true },
   topicSlug: { type: String, required: true },
   partSlug: { type: String, required: true },
   moduleSlug: { type: String, required: true },
@@ -24,6 +26,6 @@ const SavedCodeSchema = new Schema<ISavedCode>({
   drawingData: { type: String, default: '' },
 }, { timestamps: true });
 
-SavedCodeSchema.index({ batchId: 1, topicSlug: 1 }, { unique: true });
+SavedCodeSchema.index({ userId: 1, batchId: 1, topicSlug: 1 }, { unique: true });
 
 export default models.SavedCode || model<ISavedCode>('SavedCode', SavedCodeSchema);
