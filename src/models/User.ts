@@ -9,6 +9,7 @@ export interface IUser {
   password?: string;
   role: UserRole;
   batchIds: string[];
+  lastVisited?: string;
   createdAt: Date;
 }
 
@@ -19,6 +20,7 @@ const UserSchema = new Schema<IUser>({
   password: { type: String },
   role: { type: String, enum: ['mentor', 'student'], default: 'student' },
   batchIds: { type: [String], default: [] },
+  lastVisited: { type: String },
 }, { timestamps: true });
 
 // Force delete cached model to ensure schema is up to date

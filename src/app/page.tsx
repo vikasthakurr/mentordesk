@@ -6,6 +6,8 @@ import SyncButton from '@/components/ui/SyncButton';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import HomeAccordion from '@/components/ui/HomeAccordion';
 import AuthHeader from '@/components/ui/AuthHeader';
+import ResumeButton from '@/components/ui/ResumeButton';
+import MentorOnly from '@/components/ui/MentorOnly';
 
 export default function HomePage() {
   const parts = getAllParts();
@@ -65,6 +67,7 @@ export default function HomePage() {
               See Features
             </a>
           </div>
+          <ResumeButton />
           {/* Stats */}
           <div className="flex items-center justify-center gap-8 text-center">
             <div>
@@ -123,8 +126,11 @@ export default function HomePage() {
               <p className="text-sm text-gray-500 mt-1">{totalTopics} topics across {totalModules} modules</p>
             </div>
             <div className="flex items-center gap-2">
-              <HomeBatchManager />
-              <SyncButton />
+              <MentorOnly>
+                <Link href="/dashboard" className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600">Dashboard</Link>
+                <HomeBatchManager />
+                <SyncButton />
+              </MentorOnly>
             </div>
           </div>
 

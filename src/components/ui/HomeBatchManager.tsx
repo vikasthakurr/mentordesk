@@ -93,6 +93,29 @@ export default function HomeBatchManager() {
             </svg>
           </button>
         )}
+
+        {/* Invite students */}
+        {currentBatchId !== 'default' && (
+          <button
+            onClick={async () => {
+              const res = await fetch('/api/invite', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ batchId: currentBatchId }),
+              });
+              const data = await res.json();
+              if (data.joinUrl) {
+                const fullUrl = window.location.origin + data.joinUrl;
+                navigator.clipboard.writeText(fullUrl);
+                alert(`Invite link copied!\n${fullUrl}`);
+              }
+            }}
+            className="px-3 py-1.5 text-sm font-medium text-green-400 bg-green-500/10 border border-green-500/30 rounded-lg hover:bg-green-500/20 transition-colors"
+            title="Copy invite link"
+          >
+            📨 Invite
+          </button>
+        )}
       </div>
 
       {/* Add batch modal */}

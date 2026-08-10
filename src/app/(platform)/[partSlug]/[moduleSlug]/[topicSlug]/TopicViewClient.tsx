@@ -28,6 +28,15 @@ export default function TopicViewClient({
   const [sidebarHidden, setSidebarHidden] = useState(false);
   const [sidebarWidth, setSidebarWidth] = useState(320); // 320px = w-80
 
+  // Track last visited topic
+  useEffect(() => {
+    fetch('/api/last-visited', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ topicPath: `/${topic.partSlug}/${topic.moduleSlug}/${topic.slug}` }),
+    }).catch(() => {});
+  }, [topic.slug, topic.partSlug, topic.moduleSlug]);
+
   // Load completed topics from localStorage on mount
   useEffect(() => {
     setCompletedTopics(getAllCompletedTopics());
