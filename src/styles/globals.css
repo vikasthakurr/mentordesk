@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@source "../";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root { color-scheme: light dark; }
+.dark { color-scheme: dark; }
+
+/* Dark mode base styles */
+.dark body {
+  background-color: #111827;
+  color: #e5e7eb;
+}
+
+/* Float animation for decorative elements */
+@keyframes float {
+  0%, 100% { transform: perspective(800px) rotateY(20deg) rotateX(-5deg) translateY(0px); }
+  50% { transform: perspective(800px) rotateY(20deg) rotateX(-5deg) translateY(-20px); }
+}

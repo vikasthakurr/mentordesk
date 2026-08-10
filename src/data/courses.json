@@ -1,0 +1,614 @@
+{
+  "parts": [
+    {
+      "slug": "part-01-web-foundations",
+      "partNumber": 1,
+      "title": "Web Foundations",
+      "modules": [
+        {
+          "slug": "module-01-html",
+          "moduleId": "1",
+          "title": "HTML | Basics of Web Pages",
+          "topicCount": 17,
+          "topics": [
+            { "slug": "introduction-to-html", "title": "Introduction to HTML", "type": "code", "language": "html", "order": 1 },
+            { "slug": "html-boilerplate-and-page-structure", "title": "HTML Boilerplate & Page Structure", "type": "code", "language": "html", "order": 2 },
+            { "slug": "headings-and-paragraphs", "title": "Headings & Paragraphs", "type": "code", "language": "html", "order": 3 },
+            { "slug": "text-formatting", "title": "Text Formatting", "type": "code", "language": "html", "order": 4 },
+            { "slug": "semantic-html", "title": "Semantic HTML", "type": "code", "language": "html", "order": 5 },
+            { "slug": "audio-and-video-tags", "title": "Audio & Video Tags", "type": "code", "language": "html", "order": 6 },
+            { "slug": "block-vs-inline-elements", "title": "Block vs Inline Elements", "type": "code", "language": "html", "order": 7 },
+            { "slug": "html5-attributes", "title": "HTML5 Attributes", "type": "code", "language": "html", "order": 8 },
+            { "slug": "meta-tags", "title": "Meta Tags", "type": "code", "language": "html", "order": 9 },
+            { "slug": "adding-images-and-attributes", "title": "Adding Images & Attributes", "type": "code", "language": "html", "order": 10 },
+            { "slug": "lists", "title": "Lists", "type": "code", "language": "html", "order": 11 },
+            { "slug": "links", "title": "Links", "type": "code", "language": "html", "order": 12 },
+            { "slug": "tables", "title": "Tables", "type": "code", "language": "html", "order": 13 },
+            { "slug": "input-types", "title": "Input Types", "type": "code", "language": "html", "order": 14 },
+            { "slug": "forms", "title": "Forms", "type": "code", "language": "html", "order": 15 },
+            { "slug": "accessibility-basics", "title": "Accessibility Basics", "type": "code", "language": "html", "order": 16 },
+            { "slug": "aria-accessibility", "title": "ARIA Accessibility", "type": "code", "language": "html", "order": 17 }
+          ]
+        },
+        {
+          "slug": "module-02-css",
+          "moduleId": "2",
+          "title": "CSS | Styling Web Pages",
+          "topicCount": 13,
+          "topics": [
+            { "slug": "types-of-css", "title": "Types of CSS", "type": "code", "language": "css", "order": 1 },
+            { "slug": "css-selectors", "title": "CSS Selectors", "type": "code", "language": "css", "order": 2 },
+            { "slug": "colors-in-css", "title": "Colors in CSS", "type": "code", "language": "css", "order": 3 },
+            { "slug": "fonts-and-text-properties", "title": "Fonts & Text Properties", "type": "code", "language": "css", "order": 4 },
+            { "slug": "css-units", "title": "CSS Units", "type": "code", "language": "css", "order": 5 },
+            { "slug": "box-model", "title": "Box Model", "type": "code", "language": "css", "order": 6 },
+            { "slug": "backgrounds-and-image-filters", "title": "Backgrounds & Image Filters", "type": "code", "language": "css", "order": 7 },
+            { "slug": "flexbox", "title": "Flexbox", "type": "code", "language": "css", "order": 8 },
+            { "slug": "css-grid", "title": "CSS Grid", "type": "code", "language": "css", "order": 9 },
+            { "slug": "position-property", "title": "Position Property", "type": "code", "language": "css", "order": 10 },
+            { "slug": "animations-and-transitions", "title": "Animations & Transitions", "type": "code", "language": "css", "order": 11 },
+            { "slug": "media-queries", "title": "Media Queries", "type": "code", "language": "css", "order": 12 },
+            { "slug": "exercise-rothko-painting", "title": "🎨 Exercise: Rothko Painting", "type": "code", "language": "css", "order": 13, "exerciseType": "art" }
+          ]
+        },
+        {
+          "slug": "module-03-bootstrap",
+          "moduleId": "3",
+          "title": "Bootstrap 5 | Quick Styling",
+          "topicCount": 14,
+          "topics": [
+            { "slug": "typography", "title": "Typography", "type": "code", "language": "html", "order": 1 },
+            { "slug": "breakpoints", "title": "Breakpoints", "type": "code", "language": "html", "order": 2 },
+            { "slug": "grid", "title": "Grid", "type": "code", "language": "html", "order": 3 },
+            { "slug": "tables", "title": "Tables", "type": "code", "language": "html", "order": 4 },
+            { "slug": "alerts", "title": "Alerts", "type": "code", "language": "html", "order": 5 },
+            { "slug": "buttons", "title": "Buttons", "type": "code", "language": "html", "order": 6 },
+            { "slug": "modals", "title": "Modals", "type": "code", "language": "html", "order": 7 },
+            { "slug": "collapse", "title": "Collapse", "type": "code", "language": "html", "order": 8 },
+            { "slug": "accordion", "title": "Accordion", "type": "code", "language": "html", "order": 9 },
+            { "slug": "navbar-and-collapsible-navbar", "title": "Navbar & Collapsible Navbar", "type": "code", "language": "html", "order": 10 },
+            { "slug": "forms", "title": "Forms", "type": "code", "language": "html", "order": 11 },
+            { "slug": "carousel", "title": "Carousel", "type": "code", "language": "html", "order": 12 },
+            { "slug": "toast", "title": "Toast", "type": "code", "language": "html", "order": 13 },
+            { "slug": "colored-links", "title": "Colored Links", "type": "code", "language": "html", "order": 14 }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "part-02-javascript",
+      "partNumber": 2,
+      "title": "JavaScript",
+      "modules": [
+        {
+          "slug": "module-04-js-basics",
+          "moduleId": "4",
+          "title": "JavaScript | Basics",
+          "topicCount": 11,
+          "topics": [
+            { "slug": "introduction-to-javascript", "title": "Introduction to JavaScript", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "how-javascript-runs", "title": "How JavaScript Runs", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "compilation-vs-interpretation", "title": "Compilation vs Interpretation", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "single-threaded-nature-and-concurrency", "title": "Single-Threaded Nature & Concurrency", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "event-loop", "title": "Event Loop", "type": "code", "language": "javascript", "order": 5 },
+            { "slug": "installing-nodejs-and-npm", "title": "Installing Node.js & npm", "type": "code", "language": "javascript", "order": 6 },
+            { "slug": "using-browser-console", "title": "Using Browser Console", "type": "code", "language": "javascript", "order": 7 },
+            { "slug": "editor-setup-and-debugging-basics", "title": "Editor Setup & Debugging Basics", "type": "code", "language": "javascript", "order": 8 },
+            { "slug": "smallest-possible-program", "title": "Smallest Possible Program", "type": "code", "language": "javascript", "order": 9 },
+            { "slug": "memory-management", "title": "Memory Management", "type": "code", "language": "javascript", "order": 10 },
+            { "slug": "global-execution-context", "title": "Global Execution Context", "type": "code", "language": "javascript", "order": 11 }
+          ]
+        },
+        {
+          "slug": "module-05-js-core",
+          "moduleId": "5",
+          "title": "JavaScript | Core Concepts",
+          "topicCount": 21,
+          "topics": [
+            { "slug": "variables-var-let-const", "title": "Variables (var, let, const)", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "primitive-types", "title": "Primitive Types", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "reference-types", "title": "Reference Types", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "comparison-double-equals-vs-triple-equals", "title": "Comparison (== vs ===)", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "conditional-statements", "title": "Conditional Statements", "type": "code", "language": "javascript", "order": 5 },
+            { "slug": "loops", "title": "Loops", "type": "code", "language": "javascript", "order": 6 },
+            { "slug": "scope-and-lexical-environment", "title": "Scope & Lexical Environment", "type": "code", "language": "javascript", "order": 7 },
+            { "slug": "scope-chaining", "title": "Scope Chaining", "type": "code", "language": "javascript", "order": 8 },
+            { "slug": "closures", "title": "Closures", "type": "code", "language": "javascript", "order": 9 },
+            { "slug": "two-button-problem", "title": "🧩 Two Button Problem", "type": "code", "language": "javascript", "order": 10, "exerciseType": "challenge" },
+            { "slug": "objects", "title": "Objects", "type": "code", "language": "javascript", "order": 11 },
+            { "slug": "rest-and-spread-operators", "title": "Rest & Spread Operators", "type": "code", "language": "javascript", "order": 12 },
+            { "slug": "handling-multiple-arguments", "title": "Handling Multiple Arguments", "type": "code", "language": "javascript", "order": 13 },
+            { "slug": "freezing-and-sealing-objects", "title": "Freezing & Sealing Objects", "type": "code", "language": "javascript", "order": 14 },
+            { "slug": "shallow-and-deep-copy", "title": "Shallow & Deep Copy", "type": "code", "language": "javascript", "order": 15 },
+            { "slug": "currying", "title": "Currying", "type": "code", "language": "javascript", "order": 16 },
+            { "slug": "callback-functions", "title": "Callback Functions", "type": "code", "language": "javascript", "order": 17 },
+            { "slug": "higher-order-functions", "title": "Higher-Order Functions", "type": "code", "language": "javascript", "order": 18 },
+            { "slug": "map-filter-reduce", "title": "map, filter, reduce", "type": "code", "language": "javascript", "order": 19 },
+            { "slug": "array-prototype-basics", "title": "Array.prototype Basics", "type": "code", "language": "javascript", "order": 20 },
+            { "slug": "iife", "title": "IIFE", "type": "code", "language": "javascript", "order": 21 }
+          ]
+        },
+        {
+          "slug": "module-06-js-advanced",
+          "moduleId": "6",
+          "title": "JavaScript | Advanced Concepts",
+          "topicCount": 14,
+          "topics": [
+            { "slug": "dom-manipulation-and-vanilla-js", "title": "DOM Manipulation & Vanilla JS", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "event-listeners", "title": "Event Listeners", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "common-dom-events", "title": "Common DOM Events", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "event-bubbling-and-capturing", "title": "Event Bubbling & Capturing", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "event-delegation", "title": "Event Delegation", "type": "code", "language": "javascript", "order": 5 },
+            { "slug": "dom-projects", "title": "🛠️ DOM Projects", "type": "code", "language": "javascript", "order": 6, "exerciseType": "build" },
+            { "slug": "callback-hell", "title": "Callback Hell", "type": "code", "language": "javascript", "order": 7 },
+            { "slug": "promises", "title": "Promises", "type": "code", "language": "javascript", "order": 8 },
+            { "slug": "fetch-api", "title": "Fetch API", "type": "code", "language": "javascript", "order": 9 },
+            { "slug": "handling-api-responses-and-destructuring", "title": "Handling API Responses & Destructuring", "type": "code", "language": "javascript", "order": 10 },
+            { "slug": "async-await", "title": "Async / Await", "type": "code", "language": "javascript", "order": 11 },
+            { "slug": "this-keyword", "title": "this Keyword", "type": "code", "language": "javascript", "order": 12 },
+            { "slug": "call-apply-and-bind", "title": "call, apply and bind", "type": "code", "language": "javascript", "order": 13 },
+            { "slug": "debounce-and-throttle", "title": "Debounce and Throttle", "type": "code", "language": "javascript", "order": 14 }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "part-03-typescript",
+      "partNumber": 3,
+      "title": "TypeScript",
+      "modules": [
+        {
+          "slug": "module-ts1-basics",
+          "moduleId": "TS-1",
+          "title": "TypeScript Basics",
+          "topicCount": 11,
+          "topics": [
+            { "slug": "what-is-typescript", "title": "What is TypeScript?", "type": "code", "language": "typescript", "order": 1 },
+            { "slug": "installing-typescript-and-tsc-compiler", "title": "Installing TypeScript & tsc compiler", "type": "code", "language": "typescript", "order": 2 },
+            { "slug": "tsconfig-json-overview", "title": "tsconfig.json overview", "type": "code", "language": "typescript", "order": 3 },
+            { "slug": "type-annotations", "title": "Type Annotations", "type": "code", "language": "typescript", "order": 4 },
+            { "slug": "type-inference", "title": "Type Inference", "type": "code", "language": "typescript", "order": 5 },
+            { "slug": "arrays-and-tuples", "title": "Arrays & Tuples", "type": "code", "language": "typescript", "order": 6 },
+            { "slug": "enums", "title": "Enums", "type": "code", "language": "typescript", "order": 7 },
+            { "slug": "union-and-intersection-types", "title": "Union & Intersection Types", "type": "code", "language": "typescript", "order": 8 },
+            { "slug": "type-aliases-vs-interfaces", "title": "Type Aliases vs Interfaces", "type": "code", "language": "typescript", "order": 9 },
+            { "slug": "optional-and-default-properties", "title": "Optional & Default Properties", "type": "code", "language": "typescript", "order": 10 },
+            { "slug": "readonly-and-const-assertions", "title": "Readonly & Const Assertions", "type": "code", "language": "typescript", "order": 11 }
+          ]
+        },
+        {
+          "slug": "module-ts2-functions-oop",
+          "moduleId": "TS-2",
+          "title": "TypeScript with Functions & OOP",
+          "topicCount": 9,
+          "topics": [
+            { "slug": "function-types-and-return-types", "title": "Function Types & Return Types", "type": "code", "language": "typescript", "order": 1 },
+            { "slug": "optional-and-rest-parameters", "title": "Optional & Rest Parameters", "type": "code", "language": "typescript", "order": 2 },
+            { "slug": "overloading-functions", "title": "Overloading Functions", "type": "code", "language": "typescript", "order": 3 },
+            { "slug": "classes-in-typescript", "title": "Classes in TypeScript", "type": "code", "language": "typescript", "order": 4 },
+            { "slug": "access-modifiers", "title": "Access Modifiers", "type": "code", "language": "typescript", "order": 5 },
+            { "slug": "abstract-classes-and-interfaces", "title": "Abstract Classes & Interfaces", "type": "code", "language": "typescript", "order": 6 },
+            { "slug": "generics", "title": "Generics", "type": "code", "language": "typescript", "order": 7 },
+            { "slug": "generic-functions-and-generic-interfaces", "title": "Generic Functions & Generic Interfaces", "type": "code", "language": "typescript", "order": 8 },
+            { "slug": "decorators", "title": "Decorators", "type": "code", "language": "typescript", "order": 9 }
+          ]
+        },
+        {
+          "slug": "module-ts3-advanced-types",
+          "moduleId": "TS-3",
+          "title": "TypeScript Advanced Types",
+          "topicCount": 9,
+          "topics": [
+            { "slug": "utility-types", "title": "Utility Types", "type": "code", "language": "typescript", "order": 1 },
+            { "slug": "mapped-types", "title": "Mapped Types", "type": "code", "language": "typescript", "order": 2 },
+            { "slug": "conditional-types", "title": "Conditional Types", "type": "code", "language": "typescript", "order": 3 },
+            { "slug": "template-literal-types", "title": "Template Literal Types", "type": "code", "language": "typescript", "order": 4 },
+            { "slug": "discriminated-unions", "title": "Discriminated Unions", "type": "code", "language": "typescript", "order": 5 },
+            { "slug": "type-guards", "title": "Type Guards", "type": "code", "language": "typescript", "order": 6 },
+            { "slug": "narrowing-and-control-flow-analysis", "title": "Narrowing & Control Flow Analysis", "type": "code", "language": "typescript", "order": 7 },
+            { "slug": "typescript-with-dom", "title": "TypeScript with DOM", "type": "code", "language": "typescript", "order": 8 },
+            { "slug": "typescript-in-a-react-vite-project", "title": "TypeScript in a React + Vite project", "type": "code", "language": "typescript", "order": 9 }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "part-04-reactjs",
+      "partNumber": 4,
+      "title": "ReactJS",
+      "modules": [
+        {
+          "slug": "module-07-react-basics",
+          "moduleId": "7",
+          "title": "React Basics",
+          "topicCount": 25,
+          "topics": [
+            { "slug": "real-dom-vs-virtual-dom", "title": "Real DOM vs Virtual DOM", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "setting-up-react-with-vite", "title": "Setting up React with Vite", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "first-react-app", "title": "First React App", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "components", "title": "Components", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "react-portals", "title": "React Portals", "type": "code", "language": "javascript", "order": 5 },
+            { "slug": "event-handlers", "title": "Event Handlers", "type": "code", "language": "javascript", "order": 6 },
+            { "slug": "state-in-react", "title": "State in React", "type": "code", "language": "javascript", "order": 7 },
+            { "slug": "usestate-hook", "title": "useState Hook", "type": "code", "language": "javascript", "order": 8 },
+            { "slug": "props", "title": "Props", "type": "code", "language": "javascript", "order": 9 },
+            { "slug": "props-drilling", "title": "Props Drilling", "type": "code", "language": "javascript", "order": 10 },
+            { "slug": "useeffect-hook", "title": "useEffect Hook", "type": "code", "language": "javascript", "order": 11 },
+            { "slug": "useref-hook", "title": "useRef Hook", "type": "code", "language": "javascript", "order": 12 },
+            { "slug": "usecontext-and-context-api", "title": "useContext & Context API", "type": "code", "language": "javascript", "order": 13 },
+            { "slug": "usememo-hook", "title": "useMemo Hook", "type": "code", "language": "javascript", "order": 14 },
+            { "slug": "usecallback-hook", "title": "useCallback Hook", "type": "code", "language": "javascript", "order": 15 },
+            { "slug": "react-memo", "title": "React.memo", "type": "code", "language": "javascript", "order": 16 },
+            { "slug": "custom-hooks", "title": "Custom Hooks", "type": "code", "language": "javascript", "order": 17 },
+            { "slug": "conditional-rendering", "title": "Conditional Rendering", "type": "code", "language": "javascript", "order": 18 },
+            { "slug": "react-router-dom", "title": "React Router DOM", "type": "code", "language": "javascript", "order": 19 },
+            { "slug": "link-vs-anchor", "title": "Link vs Anchor", "type": "code", "language": "javascript", "order": 20 },
+            { "slug": "nested-routes-and-params", "title": "Nested Routes & Params", "type": "code", "language": "javascript", "order": 21 },
+            { "slug": "skeleton-ui", "title": "Skeleton UI", "type": "code", "language": "javascript", "order": 22 },
+            { "slug": "lazy-and-suspense", "title": "Lazy and Suspense", "type": "code", "language": "javascript", "order": 23 },
+            { "slug": "redux", "title": "Redux", "type": "code", "language": "javascript", "order": 24 },
+            { "slug": "react-project", "title": "🛠️ React Project", "type": "code", "language": "javascript", "order": 25, "exerciseType": "build" }
+          ]
+        },
+        {
+          "slug": "module-08-react19-hooks",
+          "moduleId": "8",
+          "title": "React 19 | New Hooks",
+          "topicCount": 5,
+          "topics": [
+            { "slug": "useoptimistic", "title": "useOptimistic", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "useactionstate", "title": "useActionState", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "useviewtransition", "title": "useViewTransition", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "useformstatus", "title": "useFormStatus", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "useresult", "title": "useResult", "type": "code", "language": "javascript", "order": 5 }
+          ]
+        },
+        {
+          "slug": "module-09-react-ui-tailwind",
+          "moduleId": "9",
+          "title": "React UI & Styling | Tailwind CSS",
+          "topicCount": 3,
+          "topics": [
+            { "slug": "tailwind-css-basics-and-demo", "title": "Tailwind CSS Basics & Demo", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "tailwind-setup-in-react", "title": "Tailwind Setup in React", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "project-travel-website", "title": "🛠️ Project: Travel Website", "type": "code", "language": "javascript", "order": 3, "exerciseType": "build" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "part-05-nodejs-express",
+      "partNumber": 5,
+      "title": "Node.js & Express",
+      "modules": [
+        {
+          "slug": "module-10-getting-started-nodejs",
+          "moduleId": "10",
+          "title": "Getting Started with Node.js",
+          "topicCount": 5,
+          "topics": [
+            { "slug": "what-is-nodejs", "title": "What is Node.js?", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "installing-nodejs-and-npm", "title": "Installing Node.js & npm", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "nodejs-repl-and-first-program", "title": "Node.js REPL & First Program", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "nodejs-architecture", "title": "Node.js Architecture", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "nodejs-vs-browser-javascript", "title": "Node.js vs Browser JavaScript", "type": "code", "language": "javascript", "order": 5 }
+          ]
+        },
+        {
+          "slug": "module-11-core-modules",
+          "moduleId": "11",
+          "title": "Node.js Core Modules",
+          "topicCount": 2,
+          "topics": [
+            { "slug": "commonjs-vs-es-modules", "title": "CommonJS vs ES Modules", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "file-system-fs", "title": "File System (fs)", "type": "code", "language": "javascript", "order": 2 }
+          ]
+        },
+        {
+          "slug": "module-12-http-core-server",
+          "moduleId": "12",
+          "title": "HTTP & Core Server",
+          "topicCount": 5,
+          "topics": [
+            { "slug": "http-module-basics", "title": "HTTP Module Basics", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "creating-a-server-without-express", "title": "Creating a Server without Express", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "handling-requests-and-responses", "title": "Handling Requests & Responses", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "serving-json-and-html", "title": "Serving JSON & HTML", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "manual-routing", "title": "Manual Routing", "type": "code", "language": "javascript", "order": 5 }
+          ]
+        },
+        {
+          "slug": "module-13-express-basics",
+          "moduleId": "13",
+          "title": "Express Basics",
+          "topicCount": 5,
+          "topics": [
+            { "slug": "what-is-express-and-why-use-it", "title": "What is Express & Why Use It?", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "setting-up-an-express-server", "title": "Setting up an Express Server", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "express-app-structure", "title": "Express App Structure", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "routes-get-post-put-delete", "title": "Routes (GET, POST, PUT, DELETE)", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "route-parameters-and-query-strings", "title": "Route Parameters & Query Strings", "type": "code", "language": "javascript", "order": 5 }
+          ]
+        },
+        {
+          "slug": "module-14-middleware",
+          "moduleId": "14",
+          "title": "Middleware in Express",
+          "topicCount": 4,
+          "topics": [
+            { "slug": "what-is-middleware", "title": "What is Middleware?", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "built-in-middleware", "title": "Built-in Middleware", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "custom-middleware", "title": "Custom Middleware", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "error-handling-middleware", "title": "Error-handling Middleware", "type": "code", "language": "javascript", "order": 4 }
+          ]
+        },
+        {
+          "slug": "module-15-restful-apis",
+          "moduleId": "15",
+          "title": "RESTful APIs with Express",
+          "topicCount": 4,
+          "topics": [
+            { "slug": "designing-restful-apis", "title": "Designing RESTful APIs", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "crud-apis", "title": "CRUD APIs", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "status-codes-and-best-practices", "title": "Status Codes & Best Practices", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "postman-thunder-client-testing", "title": "Postman / Thunder Client Testing", "type": "code", "language": "javascript", "order": 4 }
+          ]
+        },
+        {
+          "slug": "module-16-advanced-express",
+          "moduleId": "16",
+          "title": "Advanced Express Features",
+          "topicCount": 5,
+          "topics": [
+            { "slug": "express-router", "title": "Express Router", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "request-validation", "title": "Request Validation", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "file-uploads-with-multer", "title": "File Uploads with Multer", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "logging-with-morgan-winston", "title": "Logging with Morgan / Winston", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "sending-emails-nodemailer", "title": "Sending Emails (Nodemailer)", "type": "code", "language": "javascript", "order": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "part-06-mongodb-mongoose",
+      "partNumber": 6,
+      "title": "MongoDB & Mongoose",
+      "modules": [
+        {
+          "slug": "module-17-mongodb-basics",
+          "moduleId": "17",
+          "title": "MongoDB Basics",
+          "topicCount": 5,
+          "topics": [
+            { "slug": "what-is-nosql", "title": "What is NoSQL?", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "installing-mongodb", "title": "Installing MongoDB", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "mongo-shell-and-compass-overview", "title": "Mongo Shell & Compass Overview", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "crud-operations", "title": "CRUD Operations", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "bson-vs-json", "title": "BSON vs JSON", "type": "code", "language": "javascript", "order": 5 }
+          ]
+        },
+        {
+          "slug": "module-18-mongoose-odm",
+          "moduleId": "18",
+          "title": "Mongoose ODM",
+          "topicCount": 4,
+          "topics": [
+            { "slug": "connecting-express-to-mongodb", "title": "Connecting Express to MongoDB", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "schema-and-model-design", "title": "Schema & Model Design", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "crud-with-mongoose", "title": "CRUD with Mongoose", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "schema-validation", "title": "Schema Validation", "type": "code", "language": "javascript", "order": 4 }
+          ]
+        },
+        {
+          "slug": "module-19-advanced-mongodb",
+          "moduleId": "19",
+          "title": "Advanced MongoDB",
+          "topicCount": 5,
+          "topics": [
+            { "slug": "indexes-and-performance-optimization", "title": "Indexes & Performance Optimization", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "aggregation-framework", "title": "Aggregation Framework", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "transactions-in-mongodb", "title": "Transactions in MongoDB", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "relationships-embedding-vs-referencing", "title": "Relationships: Embedding vs Referencing", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "pagination-and-filtering", "title": "Pagination & Filtering", "type": "code", "language": "javascript", "order": 5 }
+          ]
+        },
+        {
+          "slug": "module-20-auth-security",
+          "moduleId": "20",
+          "title": "Authentication & Security",
+          "topicCount": 5,
+          "topics": [
+            { "slug": "user-registration-and-login", "title": "User Registration & Login", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "password-hashing-with-bcrypt", "title": "Password Hashing with bcrypt", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "jwt-authentication-in-express", "title": "JWT Authentication in Express", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "role-based-access-control", "title": "Role-Based Access Control", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "security-best-practices", "title": "Security Best Practices", "type": "code", "language": "javascript", "order": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "part-07-system-design",
+      "partNumber": 7,
+      "title": "System Design",
+      "modules": [
+        {
+          "slug": "module-21-fundamentals",
+          "moduleId": "21",
+          "title": "System Design Fundamentals",
+          "topicCount": 6,
+          "topics": [
+            { "slug": "monolith-vs-microservices-architecture", "title": "Monolith vs Microservices Architecture", "type": "content", "order": 1 },
+            { "slug": "cap-theorem", "title": "CAP Theorem", "type": "content", "order": 2 },
+            { "slug": "base-consistency", "title": "BASE Consistency", "type": "content", "order": 3 },
+            { "slug": "throughput-vs-latency", "title": "Throughput vs Latency", "type": "content", "order": 4 },
+            { "slug": "high-availability-and-fault-tolerance", "title": "High Availability & Fault Tolerance", "type": "content", "order": 5 },
+            { "slug": "proxy-vs-reverse-proxy", "title": "Proxy vs Reverse Proxy", "type": "content", "order": 6 }
+          ]
+        },
+        {
+          "slug": "module-22-high-level-design",
+          "moduleId": "22",
+          "title": "High Level Design",
+          "topicCount": 8,
+          "topics": [
+            { "slug": "scalability", "title": "Scalability", "type": "content", "order": 1 },
+            { "slug": "load-balancing", "title": "Load Balancing", "type": "content", "order": 2 },
+            { "slug": "caching-strategies", "title": "Caching Strategies", "type": "content", "order": 3 },
+            { "slug": "database-design", "title": "Database Design", "type": "content", "order": 4 },
+            { "slug": "message-queues-and-event-driven-architecture", "title": "Message Queues & Event-Driven Architecture", "type": "content", "order": 5 },
+            { "slug": "api-gateway-and-rate-limiting", "title": "API Gateway & Rate Limiting", "type": "content", "order": 6 },
+            { "slug": "service-discovery", "title": "Service Discovery", "type": "content", "order": 7 },
+            { "slug": "disaster-recovery-and-backup", "title": "Disaster Recovery & Backup", "type": "content", "order": 8 }
+          ]
+        },
+        {
+          "slug": "module-23-web-performance",
+          "moduleId": "23",
+          "title": "Advanced Web Performance",
+          "topicCount": 6,
+          "topics": [
+            { "slug": "critical-rendering-path", "title": "Critical Rendering Path", "type": "content", "order": 1 },
+            { "slug": "resource-prioritization", "title": "Resource Prioritization", "type": "content", "order": 2 },
+            { "slug": "cors-and-preflight-requests", "title": "CORS & Preflight Requests", "type": "content", "order": 3 },
+            { "slug": "windowing-list-virtualization", "title": "Windowing / List Virtualization", "type": "content", "order": 4 },
+            { "slug": "image-optimization-and-lazy-loading", "title": "Image Optimization & Lazy Loading", "type": "content", "order": 5 },
+            { "slug": "core-web-vitals", "title": "Core Web Vitals", "type": "content", "order": 6 }
+          ]
+        },
+        {
+          "slug": "module-24-realtime-communication",
+          "moduleId": "24",
+          "title": "Real-Time Communication",
+          "topicCount": 4,
+          "topics": [
+            { "slug": "http-polling-vs-long-polling", "title": "HTTP Polling vs Long Polling", "type": "content", "order": 1 },
+            { "slug": "websockets", "title": "WebSockets", "type": "content", "order": 2 },
+            { "slug": "server-sent-events", "title": "Server-Sent Events", "type": "content", "order": 3 },
+            { "slug": "webrtc", "title": "WebRTC", "type": "content", "order": 4 }
+          ]
+        },
+        {
+          "slug": "module-25-micro-frontend",
+          "moduleId": "25",
+          "title": "Micro Frontend System Design",
+          "topicCount": 8,
+          "topics": [
+            { "slug": "core-principles-of-micro-frontends", "title": "Core Principles of Micro Frontends", "type": "content", "order": 1 },
+            { "slug": "integration-patterns", "title": "Integration Patterns", "type": "content", "order": 2 },
+            { "slug": "module-federation", "title": "Module Federation", "type": "content", "order": 3 },
+            { "slug": "communication-between-micro-frontends", "title": "Communication between Micro Frontends", "type": "content", "order": 4 },
+            { "slug": "shared-component-libraries-and-design-systems", "title": "Shared Component Libraries & Design Systems", "type": "content", "order": 5 },
+            { "slug": "independent-deployment-and-ci-cd-pipelines", "title": "Independent Deployment & CI/CD Pipelines", "type": "content", "order": 6 },
+            { "slug": "routing-and-deep-linking-in-micro-frontends", "title": "Routing & Deep Linking in Micro Frontends", "type": "content", "order": 7 },
+            { "slug": "performance-and-security-considerations", "title": "Performance & Security Considerations", "type": "content", "order": 8 }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "deployment",
+      "partNumber": 12,
+      "title": "Deployment",
+      "modules": [
+        {
+          "slug": "module-27-deployment",
+          "moduleId": "27",
+          "title": "Deployment",
+          "topicCount": 5,
+          "topics": [
+            { "slug": "hosting-nodejs-apps", "title": "Hosting Node.js Apps", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "connecting-to-cloud-mongodb", "title": "Connecting to Cloud MongoDB", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "environment-variables-in-production", "title": "Environment Variables in Production", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "ci-cd-basics", "title": "CI/CD Basics", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "deployment-best-practices", "title": "Deployment Best Practices", "type": "code", "language": "javascript", "order": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "part-08-git-github",
+      "partNumber": 8,
+      "title": "Git & GitHub",
+      "modules": [
+        {
+          "slug": "module-28-git",
+          "moduleId": "28",
+          "title": "Git",
+          "topicCount": 5,
+          "topics": [
+            { "slug": "git-basics", "title": "Git Basics", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "branching-and-merging", "title": "Branching & Merging", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "remote-repos-and-github", "title": "Remote Repos & GitHub", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "pull-requests-and-code-review", "title": "Pull Requests & Code Review", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "advanced-git", "title": "Advanced Git", "type": "code", "language": "javascript", "order": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "part-09-testing",
+      "partNumber": 9,
+      "title": "Testing",
+      "modules": [
+        {
+          "slug": "module-29-testing",
+          "moduleId": "29",
+          "title": "Testing",
+          "topicCount": 5,
+          "topics": [
+            { "slug": "testing-fundamentals", "title": "Testing Fundamentals", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "jest-basics", "title": "Jest Basics", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "react-testing-library", "title": "React Testing Library", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "api-testing-with-supertest", "title": "API Testing with Supertest", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "e2e-testing-with-playwright", "title": "E2E Testing with Playwright", "type": "code", "language": "javascript", "order": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "part-10-nextjs",
+      "partNumber": 10,
+      "title": "Next.js",
+      "modules": [
+        {
+          "slug": "module-30-nextjs",
+          "moduleId": "30",
+          "title": "Next.js",
+          "topicCount": 6,
+          "topics": [
+            { "slug": "introduction-to-nextjs", "title": "Introduction to Next.js", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "app-router-and-file-conventions", "title": "App Router & File Conventions", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "server-components-vs-client-components", "title": "Server Components vs Client Components", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "data-fetching-patterns", "title": "Data Fetching Patterns", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "server-actions", "title": "Server Actions", "type": "code", "language": "javascript", "order": 5 },
+            { "slug": "deployment-on-vercel", "title": "Deployment on Vercel", "type": "code", "language": "javascript", "order": 6 }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "part-11-dsa",
+      "partNumber": 11,
+      "title": "DSA",
+      "modules": [
+        {
+          "slug": "module-31-dsa",
+          "moduleId": "31",
+          "title": "DSA",
+          "topicCount": 8,
+          "topics": [
+            { "slug": "big-o-notation", "title": "Big-O Notation", "type": "code", "language": "javascript", "order": 1 },
+            { "slug": "arrays-and-strings", "title": "Arrays & Strings", "type": "code", "language": "javascript", "order": 2 },
+            { "slug": "linked-lists", "title": "Linked Lists", "type": "code", "language": "javascript", "order": 3 },
+            { "slug": "stacks-and-queues", "title": "Stacks & Queues", "type": "code", "language": "javascript", "order": 4 },
+            { "slug": "trees-and-graphs", "title": "Trees & Graphs", "type": "code", "language": "javascript", "order": 5 },
+            { "slug": "sorting-algorithms", "title": "Sorting Algorithms", "type": "code", "language": "javascript", "order": 6 },
+            { "slug": "searching-algorithms", "title": "Searching Algorithms", "type": "code", "language": "javascript", "order": 7 },
+            { "slug": "common-patterns", "title": "Common Patterns", "type": "code", "language": "javascript", "order": 8 }
+          ]
+        }
+      ]
+    }
+  ]
+}
