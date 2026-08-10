@@ -47,20 +47,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const { connectDB } = await import('@/lib/mongodb');
         const { default: User } = await import('@/models/User');
         await connectDB();
-        const existing = await User.findOne({ email: user.email });
+        const email = user.email || '';
+        const existing = await User.findOne({ email });
         if (!existing) {
-          // Auto-assign mentor role to admin email
-          const role = user.email === 'vikasthakur.main@gmail.com' ? 'mentor' : 'student';
+          const role = email === 'vikasthakur.main@gmail.com' ? 'mentor' : 'student';
           await User.create({
-            email: user.email,
-            name: user.name,
-            image: user.image,
+            email,
+            name: user.name || 'User',
+            image: user.image || '',
             role,
             batchIds: [],
           });
-        } else if (user.email === 'vikasthakur.main@gmail.com' && existing.role !== 'mentor') {
-          // Ensure admin always has mentor role
-          await User.findOneAndUpdate({ email: user.email }, { role: 'mentor' });
+        } else if (email === 'vikasthakur.main@gmail.com' && existing.role !== 'mentor') {
+          await User.findOneAndUpdate({ email }, { role: 'mentor' });
         }
       }
       return true;
