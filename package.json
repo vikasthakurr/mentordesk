@@ -12,11 +12,13 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@auth/mongodb-adapter": "^3.11.3",
     "@excalidraw/excalidraw": "^0.18.1",
     "@monaco-editor/react": "^4.7.0",
     "@stackblitz/sdk": "^1.11.1",
     "mongoose": "^9.9.1",
     "next": "^15.0.0",
+    "next-auth": "^5.0.0-beta.32",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^9.0.0",

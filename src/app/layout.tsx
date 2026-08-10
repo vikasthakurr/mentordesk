@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
 import '@/styles/globals.css';
 import { ThemeProvider } from '@/lib/theme';
+import { SessionProvider } from 'next-auth/react';
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -23,7 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={openSans.variable}>
       <body className={`${openSans.className} antialiased`}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <SessionProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );

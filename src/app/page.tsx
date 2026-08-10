@@ -5,6 +5,7 @@ import HomeBatchManager from '@/components/ui/HomeBatchManager';
 import SyncButton from '@/components/ui/SyncButton';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import HomeAccordion from '@/components/ui/HomeAccordion';
+import AuthHeader from '@/components/ui/AuthHeader';
 
 export default function HomePage() {
   const parts = getAllParts();
@@ -28,6 +29,7 @@ export default function HomePage() {
           </nav>
           <div className="flex items-center gap-2">
             <ThemeToggle />
+            <AuthHeader />
             <Link href="#curriculum" className="px-3 py-1.5 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-500 transition-colors">
               Get Started
             </Link>
