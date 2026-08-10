@@ -14,6 +14,10 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: 'MentorDesk',
   description: 'An all-in-one mentorship platform for teaching full-stack web development',
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
 };
 
 export default function RootLayout({
