@@ -17,13 +17,13 @@ const templates: { id: Template; label: string; icon: string; description: strin
   { id: 'express', label: 'Express', icon: '🚂', description: 'Express Server' },
 ];
 
-// CodeSandbox new sandbox templates (editable, fresh projects)
+// StackBlitz fork URLs - creates a fresh editable copy for each user
 const templateUrls: Record<Template, string> = {
-  node: 'https://codesandbox.io/embed/new?template=node&fontsize=14&hidenavigation=0&theme=dark',
-  react: 'https://codesandbox.io/embed/new?template=react&fontsize=14&hidenavigation=0&theme=dark&module=%2Fsrc%2FApp.js',
-  'react-ts': 'https://codesandbox.io/embed/new?template=react-ts&fontsize=14&hidenavigation=0&theme=dark&module=%2Fsrc%2FApp.tsx',
-  nextjs: 'https://codesandbox.io/embed/new?template=nextjs&fontsize=14&hidenavigation=0&theme=dark',
-  express: 'https://codesandbox.io/embed/new?template=express&fontsize=14&hidenavigation=0&theme=dark',
+  node: 'https://stackblitz.com/fork/node?embed=1&file=index.js&theme=dark',
+  react: 'https://stackblitz.com/fork/react?embed=1&file=src/App.js&theme=dark',
+  'react-ts': 'https://stackblitz.com/fork/react-ts?embed=1&file=src/App.tsx&theme=dark',
+  nextjs: 'https://stackblitz.com/fork/nextjs?embed=1&file=app/page.tsx&theme=dark',
+  express: 'https://stackblitz.com/fork/express?embed=1&file=index.js&theme=dark',
 };
 
 /**
@@ -36,7 +36,6 @@ export default function NodeEditor({ topicSlug }: NodeEditorProps) {
 
   const embedUrl = useMemo(() => {
     const base = templateUrls[activeTemplate];
-    // Replace theme in the URL based on current MentorDesk theme
     return base.replace('theme=dark', `theme=${theme === 'dark' ? 'dark' : 'light'}`);
   }, [activeTemplate, theme]);
 

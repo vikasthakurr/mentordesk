@@ -16,6 +16,7 @@
     "@excalidraw/excalidraw": "^0.18.1",
     "@monaco-editor/react": "^4.7.0",
     "@stackblitz/sdk": "^1.11.1",
+    "@vercel/analytics": "^2.0.1",
     "bcryptjs": "^3.0.3",
     "mongoose": "^9.9.1",
     "next": "^15.0.0",

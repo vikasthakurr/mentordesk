@@ -3,6 +3,7 @@ import { Open_Sans } from 'next/font/google';
 import '@/styles/globals.css';
 import { ThemeProvider } from '@/lib/theme';
 import { SessionProvider } from 'next-auth/react';
+import { Analytics } from '@vercel/analytics/next';
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -31,6 +32,7 @@ export default function RootLayout({
         <SessionProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </SessionProvider>
+        <Analytics />
       </body>
     </html>
   );
