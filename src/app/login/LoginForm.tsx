@@ -38,15 +38,15 @@ export default function LoginForm() {
       redirect: false,
     });
 
-    if (result?.error || result?.code) {
-      setError(mode === 'signup' ? 'Account created! Please click Sign In below.' : 'Invalid email or password');
-      if (mode === 'signup') setMode('login');
-      setLoading(false);
+    // NextAuth v5 beta: check result.ok for success
+    if (result?.ok) {
+      window.location.href = '/';
       return;
     }
 
-    // Redirect to home
-    window.location.href = '/';
+    setError(mode === 'signup' ? 'Account created! Please sign in now.' : 'Invalid email or password');
+    if (mode === 'signup') setMode('login');
+    setLoading(false);
   };
 
   const handleGoogle = () => {
