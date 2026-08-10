@@ -79,7 +79,7 @@ export function PartSection({
           </span>
         </div>
         <svg
-          className={`w-4 h-4 text-gray-400 dark:text-gray-500 flex-shrink-0 transition-transform ${
+          className={`w-4 h-4 text-gray-400 dark:text-gray-500 flex-shrink-0 chevron-animated ${
             isExpanded ? 'rotate-90' : ''
           }`}
           fill="none"

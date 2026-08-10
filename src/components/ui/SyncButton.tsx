@@ -25,7 +25,7 @@ export default function SyncButton() {
       <button
         onClick={handleSync}
         disabled={syncing}
-        className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-emerald-600 rounded-lg hover:bg-emerald-500 disabled:opacity-50 transition-colors"
+        className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-emerald-600 rounded-lg hover:bg-emerald-500 disabled:opacity-50 transition-all icon-hover-bounce hover:scale-105 active:scale-95"
       >
         {syncing ? (
           <>

@@ -57,7 +57,7 @@ export default function MarkAsCompletedButton({
     <button
       onClick={handleToggle}
       aria-pressed={completed}
-      className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-md border transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-1 ${
+      className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-md border transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-1 hover:scale-105 active:scale-95 ${
         completed
           ? 'text-white bg-green-600 border-green-600 hover:bg-green-700'
           : 'text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 hover:bg-gray-50'
@@ -68,7 +68,7 @@ export default function MarkAsCompletedButton({
         <>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
+            className="h-4 w-4 animate-[icon-pop_0.35s_cubic-bezier(0.34,1.56,0.64,1)]"
             viewBox="0 0 20 20"
             fill="currentColor"
             aria-hidden="true"

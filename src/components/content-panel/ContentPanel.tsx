@@ -31,6 +31,7 @@ type ActiveTab = 'code' | 'draw' | 'notes' | 'node';
 export default function ContentPanel({ topic, onCompletionChange, onNavigatePrev, onNavigateNext, hasPrev, hasNext, partTitle, moduleTitle, onToggleFullscreen }: ExtendedContentPanelProps) {
   const [currentCode, setCurrentCode] = useState<string>('');
   const codeRef = useRef<string>('');
+  const [editorLanguage, setEditorLanguage] = useState<string>('javascript');
   const [presentMode, setPresentMode] = useState(false);
 
   // Determine default tab based on topic type
@@ -42,9 +43,10 @@ export default function ContentPanel({ topic, onCompletionChange, onNavigatePrev
 
   const [activeTab, setActiveTab] = useState<ActiveTab>(getDefaultTab);
 
-  const handleCodeChange = useCallback((code: string) => {
+  const handleCodeChange = useCallback((code: string, language?: string) => {
     setCurrentCode(code);
     codeRef.current = code;
+    if (language) setEditorLanguage(language);
   }, []);
 
   // Get language and starter code for the code editor
@@ -58,16 +60,19 @@ export default function ContentPanel({ topic, onCompletionChange, onNavigatePrev
 
   const handleDownload = useCallback(() => {
     if (activeTab === 'code') {
-      const { language } = getCodeProps();
+      // Use editorLanguage tracked from MultiFileEditor, fallback to topic language
+      const lang = (editorLanguage || getCodeProps().language) as any;
       const code = codeRef.current || getCodeProps().starterCode;
-      downloadCodeFile(topic.title, code, language);
+      if (code && code.trim().length > 0) {
+        downloadCodeFile(topic.title, code, lang);
+      }
     } else if (activeTab === 'notes') {
       const content = topic.content as ContentTopicContent;
       if (content.markdown) {
         downloadMarkdownFile(topic.title, content.markdown);
       }
     }
-  }, [topic, activeTab]);
+  }, [topic, activeTab, editorLanguage]);
 
   // Extract exercise instructions
   const exerciseInstructions = (() => {
@@ -106,20 +111,20 @@ export default function ContentPanel({ topic, onCompletionChange, onNavigatePrev
             <button
               onClick={onNavigatePrev}
               disabled={!hasPrev}
-              className="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-30 disabled:cursor-not-allowed"
+              className="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-30 disabled:cursor-not-allowed icon-nav-left transition-colors"
               title="Previous topic"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             <button
               onClick={onNavigateNext}
               disabled={!hasNext}
-              className="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-30 disabled:cursor-not-allowed"
+              className="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-30 disabled:cursor-not-allowed icon-nav-right transition-colors"
               title="Next topic"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -131,7 +136,7 @@ export default function ContentPanel({ topic, onCompletionChange, onNavigatePrev
         <div className="flex items-center gap-2">
           <button
             onClick={togglePresentMode}
-            className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${
+            className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md transition-all hover:scale-105 active:scale-95 ${
               presentMode
                 ? 'bg-blue-600 text-white hover:bg-blue-700'
                 : 'text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600'
@@ -143,7 +148,7 @@ export default function ContentPanel({ topic, onCompletionChange, onNavigatePrev
           <MarkAsCompletedButton topicSlug={topic.slug} onToggle={onCompletionChange} />
           <button
             onClick={handleDownload}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600 transition-all icon-hover-download hover:scale-105 active:scale-95"
             aria-label={`Download ${topic.title}`}
             data-testid="download-button"
           >
@@ -170,7 +175,7 @@ export default function ContentPanel({ topic, onCompletionChange, onNavigatePrev
             {/* Code Editor */}
             <button
               onClick={() => setActiveTab('code')}
-              className={`p-2 rounded-lg transition-colors ${
+              className={`activity-icon p-2 rounded-lg transition-colors ${
                 activeTab === 'code'
                   ? 'text-blue-400 bg-gray-700'
                   : 'text-gray-500 hover:text-gray-300 hover:bg-gray-700'
@@ -185,7 +190,7 @@ export default function ContentPanel({ topic, onCompletionChange, onNavigatePrev
             {/* Drawing Board */}
             <button
               onClick={() => setActiveTab('draw')}
-              className={`p-2 rounded-lg transition-colors ${
+              className={`activity-icon p-2 rounded-lg transition-colors ${
                 activeTab === 'draw'
                   ? 'text-blue-400 bg-gray-700'
                   : 'text-gray-500 hover:text-gray-300 hover:bg-gray-700'
@@ -200,7 +205,7 @@ export default function ContentPanel({ topic, onCompletionChange, onNavigatePrev
             {/* Node.js */}
             <button
               onClick={() => setActiveTab('node')}
-              className={`p-2 rounded-lg transition-colors ${
+              className={`activity-icon p-2 rounded-lg transition-colors ${
                 activeTab === 'node'
                   ? 'text-green-400 bg-gray-700'
                   : 'text-gray-500 hover:text-gray-300 hover:bg-gray-700'
@@ -216,7 +221,7 @@ export default function ContentPanel({ topic, onCompletionChange, onNavigatePrev
             {topic.type === 'content' && (
               <button
                 onClick={() => setActiveTab('notes')}
-                className={`p-2 rounded-lg transition-colors ${
+                className={`activity-icon p-2 rounded-lg transition-colors ${
                   activeTab === 'notes'
                     ? 'text-blue-400 bg-gray-700'
                     : 'text-gray-500 hover:text-gray-300 hover:bg-gray-700'
@@ -235,7 +240,7 @@ export default function ContentPanel({ topic, onCompletionChange, onNavigatePrev
             {/* Presentation Mode Toggle (bottom of activity bar) */}
             <button
               onClick={togglePresentMode}
-              className="p-2 rounded-lg text-gray-500 hover:text-yellow-400 hover:bg-gray-700 transition-colors"
+              className="activity-icon p-2 rounded-lg text-gray-500 hover:text-yellow-400 hover:bg-gray-700 transition-colors"
               title="Presentation Mode"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -267,6 +272,7 @@ export default function ContentPanel({ topic, onCompletionChange, onNavigatePrev
               defaultHtml={topic.type === 'code' && (topic.content as CodeTopicContent).language === 'html' ? (topic.content as CodeTopicContent).starterCode : undefined}
               defaultCss={topic.type === 'code' && (topic.content as CodeTopicContent).language === 'css' ? (topic.content as CodeTopicContent).starterCode : undefined}
               defaultJs={topic.type === 'code' && (topic.content as CodeTopicContent).language === 'javascript' ? (topic.content as CodeTopicContent).starterCode : undefined}
+              onCodeChange={handleCodeChange}
             />
           )}
 

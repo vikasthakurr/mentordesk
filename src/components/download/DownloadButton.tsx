@@ -100,10 +100,10 @@ export default function DownloadButton({
       <button
         onClick={handleDownload}
         disabled={isDisabled || isExporting}
-        className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition-colors ${
+        className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition-all ${
           isDisabled || isExporting
             ? 'text-gray-400 bg-gray-50 border-gray-200 cursor-not-allowed opacity-50'
-            : 'text-gray-700 bg-gray-100 border-gray-300 hover:bg-gray-200'
+            : 'text-gray-700 bg-gray-100 border-gray-300 hover:bg-gray-200 icon-hover-download hover:scale-105 active:scale-95'
         }`}
         aria-label={`Download ${topic.title}`}
         data-testid="download-button"

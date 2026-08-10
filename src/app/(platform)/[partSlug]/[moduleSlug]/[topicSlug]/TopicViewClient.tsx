@@ -111,7 +111,7 @@ export default function TopicViewClient({
       <div className="lg:hidden flex items-center px-4 py-2 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 flex-shrink-0">
         <button
           onClick={() => setNavOpen(true)}
-          className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-gray-200 transition-colors"
+          className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-gray-200 transition-colors hamburger-icon"
           aria-label="Open topic navigator"
         >
           <svg
@@ -155,7 +155,7 @@ export default function TopicViewClient({
           <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Topics</span>
           <button
             onClick={() => setNavOpen(false)}
-            className="p-1.5 text-gray-500 hover:text-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            className="p-1.5 text-gray-500 hover:text-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-all hover:rotate-90"
             aria-label="Close topic navigator"
           >
             <svg

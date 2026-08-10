@@ -37,6 +37,7 @@ interface MultiFileEditorProps {
   defaultCss?: string;
   defaultJs?: string;
   defaultTs?: string;
+  onCodeChange?: (code: string, language: string) => void;
 }
 
 const DEFAULT_HTML = `<!DOCTYPE html>
@@ -79,6 +80,7 @@ export default function MultiFileEditor({
   defaultCss,
   defaultJs,
   defaultTs,
+  onCodeChange: onCodeChangeCallback,
 }: MultiFileEditorProps) {
   const [activeFile, setActiveFile] = useState<FileTab>('html');
   const [htmlCode, setHtmlCode] = useState('');
@@ -101,10 +103,16 @@ export default function MultiFileEditor({
 
   // Load saved code or defaults on mount
   useEffect(() => {
-    setHtmlCode(loadCode(htmlKey) ?? defaultHtml ?? DEFAULT_HTML);
-    setCssCode(loadCode(cssKey) ?? defaultCss ?? DEFAULT_CSS);
-    setJsCode(loadCode(jsKey) ?? defaultJs ?? DEFAULT_JS);
-    setTsCode(loadCode(tsKey) ?? defaultTs ?? DEFAULT_TS);
+    const loadedHtml = loadCode(htmlKey) ?? defaultHtml ?? DEFAULT_HTML;
+    const loadedCss = loadCode(cssKey) ?? defaultCss ?? DEFAULT_CSS;
+    const loadedJs = loadCode(jsKey) ?? defaultJs ?? DEFAULT_JS;
+    const loadedTs = loadCode(tsKey) ?? defaultTs ?? DEFAULT_TS;
+    setHtmlCode(loadedHtml);
+    setCssCode(loadedCss);
+    setJsCode(loadedJs);
+    setTsCode(loadedTs);
+    // Notify parent of initial JS code so download works without edits
+    onCodeChangeCallback?.(loadedJs, 'javascript');
   }, [topicSlug]);
 
   // Save code with debounce
@@ -224,21 +232,25 @@ export default function MultiFileEditor({
       case 'html':
         setHtmlCode(code);
         debouncedSave(htmlKey, code);
+        onCodeChangeCallback?.(code, 'html');
         break;
       case 'css':
         setCssCode(code);
         debouncedSave(cssKey, code);
+        onCodeChangeCallback?.(code, 'css');
         break;
       case 'js':
         setJsCode(code);
         debouncedSave(jsKey, code);
+        onCodeChangeCallback?.(code, 'javascript');
         break;
       case 'ts':
         setTsCode(code);
         debouncedSave(tsKey, code);
+        onCodeChangeCallback?.(code, 'typescript');
         break;
     }
-  }, [activeFile, debouncedSave, htmlKey, cssKey, jsKey, tsKey]);
+  }, [activeFile, debouncedSave, htmlKey, cssKey, jsKey, tsKey, onCodeChangeCallback]);
 
   const handleReset = useCallback(() => {
     setHtmlCode(defaultHtml ?? DEFAULT_HTML);
