@@ -18,32 +18,16 @@ export async function loadTopicContent(
   const topicTitle = meta?.title ?? topicSlug;
   const topicLanguage = meta?.language ?? 'javascript';
 
-  try {
-    // Dynamic import of the topic JSON file
-    const topicModule = await import(
-      `@/data/topics/${partSlug}/${moduleSlug}/${topicSlug}.json`
-    );
-    const data = topicModule.default ?? topicModule;
-
-    return {
-      slug: topicSlug,
-      title: data.title ?? topicTitle,
-      type: data.type ?? topicType,
-      partSlug,
-      moduleSlug,
-      content: data.content,
-    };
-  } catch {
-    // Return a placeholder topic when the file doesn't exist
-    return {
-      slug: topicSlug,
-      title: topicTitle,
-      type: topicType,
-      partSlug,
-      moduleSlug,
-      content: getPlaceholderContent(topicType, topicTitle, topicLanguage),
-    };
-  }
+  // Return placeholder content based on topic type
+  // (Individual topic JSON files are not used — content is generated dynamically)
+  return {
+    slug: topicSlug,
+    title: topicTitle,
+    type: topicType,
+    partSlug,
+    moduleSlug,
+    content: getPlaceholderContent(topicType, topicTitle, topicLanguage),
+  };
 }
 
 /**
