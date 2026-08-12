@@ -27,6 +27,8 @@ export function toKebabCase(title: string): string {
 const languageExtensionMap: Record<SupportedLanguage, string> = {
   javascript: '.js',
   typescript: '.ts',
+  jsx: '.jsx',
+  tsx: '.tsx',
   html: '.html',
   css: '.css',
   json: '.json',
@@ -58,8 +60,10 @@ export function getFileExtension(type: TopicType | 'mixed', language?: Supported
 function getMimeType(language: SupportedLanguage): string {
   switch (language) {
     case 'javascript':
+    case 'jsx':
       return 'text/javascript';
     case 'typescript':
+    case 'tsx':
       return 'text/typescript';
     case 'html':
       return 'text/html';

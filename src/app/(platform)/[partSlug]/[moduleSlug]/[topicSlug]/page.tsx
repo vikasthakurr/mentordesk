@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
-import { getAllParts, getPartBySlug, getModuleBySlug } from '@/lib/courses';
+import { Metadata } from 'next';
+import { getAllParts, getPartBySlug, getModuleBySlug, getTopicBySlug } from '@/lib/courses';
 import { loadTopicContent } from '@/lib/topics';
 import TopicViewClient from './TopicViewClient';
 
@@ -9,6 +10,28 @@ interface TopicPageProps {
     moduleSlug: string;
     topicSlug: string;
   }>;
+}
+
+export async function generateMetadata({ params }: TopicPageProps): Promise<Metadata> {
+  const { partSlug, moduleSlug, topicSlug } = await params;
+  const part = getPartBySlug(partSlug);
+  const mod = getModuleBySlug(partSlug, moduleSlug);
+  const topic = getTopicBySlug(partSlug, moduleSlug, topicSlug);
+
+  const title = topic?.title || topicSlug.replace(/-/g, ' ');
+  const partTitle = part?.title || '';
+  const modTitle = mod?.title || '';
+
+  return {
+    title: `${title} | MentorDesk`,
+    description: `Learn ${title} in the ${modTitle} module of ${partTitle}. Interactive coding platform for full-stack web development.`,
+    openGraph: {
+      title: `${title} | MentorDesk`,
+      description: `Learn ${title} — ${partTitle} › ${modTitle}`,
+      type: 'article',
+      siteName: 'MentorDesk',
+    },
+  };
 }
 
 export default async function TopicPage({ params }: TopicPageProps) {

@@ -10,7 +10,7 @@
 export type TopicType = 'code' | 'content' | 'diagram';
 
 /** Supported programming languages for the code editor */
-export type SupportedLanguage = 'javascript' | 'typescript' | 'html' | 'css' | 'json';
+export type SupportedLanguage = 'javascript' | 'typescript' | 'html' | 'css' | 'json' | 'jsx' | 'tsx';
 
 /** Exercise types for special topic variants */
 export type ExerciseType = 'art' | 'build' | 'challenge';

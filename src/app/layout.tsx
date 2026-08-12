@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 import { ThemeProvider } from '@/lib/theme';
 import { SessionProvider } from 'next-auth/react';
 import { Analytics } from '@vercel/analytics/next';
+import { ToastProvider } from '@/components/ui/Toast';
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -30,7 +31,9 @@ export default function RootLayout({
     <html lang="en" className={openSans.variable}>
       <body className={`${openSans.className} antialiased`}>
         <SessionProvider>
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            <ToastProvider>{children}</ToastProvider>
+          </ThemeProvider>
         </SessionProvider>
         <Analytics />
       </body>

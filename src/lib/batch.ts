@@ -11,7 +11,11 @@ export interface Batch {
 
 export function getCurrentBatch(): string {
   if (typeof window === 'undefined') return 'default';
-  return localStorage.getItem(BATCH_KEY) || 'default';
+  try {
+    return localStorage.getItem(BATCH_KEY) || 'default';
+  } catch {
+    return 'default';
+  }
 }
 
 export function setCurrentBatch(batchId: string): void {

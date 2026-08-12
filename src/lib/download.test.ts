@@ -75,6 +75,14 @@ describe('download utilities', () => {
       expect(getFileExtension('code', 'json')).toBe('.json');
     });
 
+    it('returns .jsx for code type with jsx language', () => {
+      expect(getFileExtension('code', 'jsx')).toBe('.jsx');
+    });
+
+    it('returns .tsx for code type with tsx language', () => {
+      expect(getFileExtension('code', 'tsx')).toBe('.tsx');
+    });
+
     it('returns .js for code type with no language specified', () => {
       expect(getFileExtension('code')).toBe('.js');
     });
@@ -199,6 +207,20 @@ describe('download utilities', () => {
         const blob = createObjectURLMock.mock.calls[0][0] as Blob;
         expect(blob.type).toBe('application/json');
         expect(createdAnchor.download).toBe('config.json');
+      });
+
+      it('uses correct MIME type for JSX', () => {
+        downloadCodeFile('App Component', 'export default () => <div />', 'jsx');
+        const blob = createObjectURLMock.mock.calls[0][0] as Blob;
+        expect(blob.type).toBe('text/javascript');
+        expect(createdAnchor.download).toBe('app-component.jsx');
+      });
+
+      it('uses correct MIME type for TSX', () => {
+        downloadCodeFile('Button Component', 'export const Button: FC = () => <button />', 'tsx');
+        const blob = createObjectURLMock.mock.calls[0][0] as Blob;
+        expect(blob.type).toBe('text/typescript');
+        expect(createdAnchor.download).toBe('button-component.tsx');
       });
     });
 

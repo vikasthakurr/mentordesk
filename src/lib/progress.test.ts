@@ -97,13 +97,13 @@ describe('progress', () => {
     it('marks a topic as completed and returns true', () => {
       const result = markTopicComplete('intro-to-html');
       expect(result).toBe(true);
-      expect(localStorage.getItem('mern-platform:progress:intro-to-html')).toBe('1');
+      expect(localStorage.getItem('mern-platform:progress:default:intro-to-html')).toBe('1');
     });
 
     it('overwrites previous value with "1"', () => {
-      localStorage.setItem('mern-platform:progress:intro-to-html', 'old');
+      localStorage.setItem('mern-platform:progress:default:intro-to-html', 'old');
       markTopicComplete('intro-to-html');
-      expect(localStorage.getItem('mern-platform:progress:intro-to-html')).toBe('1');
+      expect(localStorage.getItem('mern-platform:progress:default:intro-to-html')).toBe('1');
     });
   });
 

@@ -8,6 +8,7 @@ import HomeAccordion from '@/components/ui/HomeAccordion';
 import AuthHeader from '@/components/ui/AuthHeader';
 import ResumeButton from '@/components/ui/ResumeButton';
 import MentorOnly from '@/components/ui/MentorOnly';
+import CurriculumSearch from '@/components/ui/CurriculumSearch';
 
 export default function HomePage() {
   const parts = getAllParts();
@@ -53,7 +54,7 @@ export default function HomePage() {
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10">
             Code editor, drawing board, live preview, and Node.js sandbox - all in one window. Built for mentors who screen-share while teaching.
           </p>
-          <div className="flex items-center justify-center gap-4 mb-12">
+          <div className="flex items-center justify-center gap-4 mb-8">
             <Link
               href="#curriculum"
               className="px-6 py-3 text-sm font-semibold text-white bg-blue-600 rounded-xl hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20"
@@ -67,7 +68,9 @@ export default function HomePage() {
               See Features
             </a>
           </div>
-          <ResumeButton />
+          <div className="mb-12">
+            <ResumeButton />
+          </div>
           {/* Stats */}
           <div className="flex items-center justify-center gap-8 text-center">
             <div>
@@ -135,6 +138,7 @@ export default function HomePage() {
           </div>
 
           <ProgressBanner />
+          <CurriculumSearch parts={parts} />
           <HomeAccordion parts={parts} />
         </div>
       </section>

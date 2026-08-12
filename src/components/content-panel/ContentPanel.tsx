@@ -13,7 +13,9 @@ import ContentViewer from './ContentViewer';
 import DiagramEditor from './DiagramEditor';
 import NodeEditor from './NodeEditor';
 import ExerciseInstructions from './ExerciseInstructions';
+import StudentNotes from './StudentNotes';
 import MarkAsCompletedButton from '@/components/ui/MarkAsCompletedButton';
+import BookmarkButton from '@/components/ui/BookmarkButton';
 
 interface ExtendedContentPanelProps extends ContentPanelProps {
   onCompletionChange?: (isComplete: boolean) => void;
@@ -146,6 +148,7 @@ export default function ContentPanel({ topic, onCompletionChange, onNavigatePrev
             🎬 {presentMode ? 'Exit' : 'Present'}
           </button>
           <MarkAsCompletedButton topicSlug={topic.slug} onToggle={onCompletionChange} />
+          <BookmarkButton topicSlug={topic.slug} topicTitle={topic.title} />
           <button
             onClick={handleDownload}
             className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600 transition-all icon-hover-download hover:scale-105 active:scale-95"
@@ -287,7 +290,20 @@ export default function ContentPanel({ topic, onCompletionChange, onNavigatePrev
 
           {/* Notes (for content topics) */}
           {activeTab === 'notes' && (
-            <ContentViewer content={(topic.content as ContentTopicContent).markdown || ''} />
+            <div className="flex flex-col lg:flex-row h-full">
+              {/* Content/Reading material */}
+              <div className="flex-1 min-h-0 overflow-y-auto border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-gray-700">
+                <ContentViewer content={(topic.content as ContentTopicContent).markdown || ''} />
+              </div>
+              {/* Student's personal notes */}
+              <div className="flex-1 min-h-0 lg:max-w-[50%]">
+                <StudentNotes
+                  topicSlug={topic.slug}
+                  partSlug={topic.partSlug}
+                  moduleSlug={topic.moduleSlug}
+                />
+              </div>
+            </div>
           )}
 
           {/* Node.js - StackBlitz WebContainer */}

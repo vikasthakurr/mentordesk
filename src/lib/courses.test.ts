@@ -54,10 +54,10 @@ describe('courses', () => {
 
   describe('getTopicBySlug', () => {
     it('returns topic metadata when all slugs match', () => {
-      const topic = getTopicBySlug('part-01-web-foundations', 'module-01-html', 'intro-to-html');
+      const topic = getTopicBySlug('part-01-web-foundations', 'module-01-html', 'introduction-to-html');
       expect(topic).toBeDefined();
       expect(topic!.title).toBe('Introduction to HTML');
-      expect(topic!.type).toBe('content');
+      expect(topic!.type).toBe('code');
     });
 
     it('returns undefined for non-existent topic slug', () => {

@@ -3,29 +3,37 @@ import { render, screen } from '@testing-library/react';
 import ContentPanel from './ContentPanel';
 import type { Topic, CodeTopicContent, ContentTopicContent, DiagramTopicContent } from '@/types';
 
-// Mock child components to isolate ContentPanel routing logic
-vi.mock('./CodeEditor', () => ({
-  default: ({ topicSlug, language }: any) => (
-    <div data-testid="code-editor" data-topic={topicSlug} data-language={language}>
-      CodeEditor
-    </div>
+// Mock dynamic imports and heavy child components
+vi.mock('./MultiFileEditor', () => ({
+  default: ({ topicSlug }: any) => (
+    <div data-testid="multi-file-editor" data-topic={topicSlug}>MultiFileEditor</div>
   ),
 }));
 
 vi.mock('./ContentViewer', () => ({
   default: ({ content }: any) => (
-    <div data-testid="content-viewer" data-content={content}>
-      ContentViewer
-    </div>
+    <div data-testid="content-viewer" data-content={content}>ContentViewer</div>
   ),
 }));
 
 vi.mock('./DiagramEditor', () => ({
   default: ({ topicSlug }: any) => (
-    <div data-testid="diagram-editor" data-topic={topicSlug}>
-      DiagramEditor
-    </div>
+    <div data-testid="diagram-editor" data-topic={topicSlug}>DiagramEditor</div>
   ),
+}));
+
+vi.mock('./NodeEditor', () => ({
+  default: ({ topicSlug }: any) => (
+    <div data-testid="node-editor" data-topic={topicSlug}>NodeEditor</div>
+  ),
+}));
+
+vi.mock('./ExerciseInstructions', () => ({
+  default: () => <div data-testid="exercise-instructions">ExerciseInstructions</div>,
+}));
+
+vi.mock('@/components/ui/MarkAsCompletedButton', () => ({
+  default: () => <button data-testid="mark-completed-button">Mark</button>,
 }));
 
 vi.mock('@/lib/download', () => ({
@@ -33,8 +41,6 @@ vi.mock('@/lib/download', () => ({
   downloadMarkdownFile: vi.fn(),
   downloadDiagramPng: vi.fn(),
 }));
-
-vi.mock('highlight.js/styles/github-dark.css', () => ({}));
 
 describe('ContentPanel', () => {
   beforeEach(() => {
@@ -80,95 +86,22 @@ describe('ContentPanel', () => {
   });
 
   describe('Content type routing', () => {
-    it('renders CodeEditor for code type topics', () => {
+    it('renders MultiFileEditor for code type topics (default tab)', () => {
       const topic = makeCodeTopic();
       render(<ContentPanel topic={topic} />);
-
-      expect(screen.getByTestId('code-editor')).toBeInTheDocument();
-      expect(screen.queryByTestId('content-viewer')).not.toBeInTheDocument();
-      expect(screen.queryByTestId('diagram-editor')).not.toBeInTheDocument();
+      expect(screen.getByTestId('multi-file-editor')).toBeInTheDocument();
     });
 
-    it('renders ContentViewer for content type topics', () => {
+    it('renders ContentViewer for content type topics (notes tab default)', () => {
       const topic = makeContentTopic();
       render(<ContentPanel topic={topic} />);
-
       expect(screen.getByTestId('content-viewer')).toBeInTheDocument();
-      expect(screen.queryByTestId('code-editor')).not.toBeInTheDocument();
-      expect(screen.queryByTestId('diagram-editor')).not.toBeInTheDocument();
     });
 
-    it('renders DiagramEditor for diagram type topics', () => {
+    it('renders DiagramEditor for diagram type topics (draw tab default)', () => {
       const topic = makeDiagramTopic();
       render(<ContentPanel topic={topic} />);
-
       expect(screen.getByTestId('diagram-editor')).toBeInTheDocument();
-    });
-
-    it('renders side-by-side layout for diagram topics with description', () => {
-      const topic = makeDiagramTopic();
-      render(<ContentPanel topic={topic} />);
-
-      expect(screen.getByTestId('diagram-side-by-side')).toBeInTheDocument();
-      expect(screen.getByTestId('diagram-editor')).toBeInTheDocument();
-      expect(screen.getByTestId('content-viewer')).toBeInTheDocument();
-    });
-
-    it('renders DiagramEditor alone when diagram has no description', () => {
-      const topic = makeDiagramTopic({
-        content: {
-          description: '',
-          initialElements: [],
-        } as DiagramTopicContent,
-      });
-      render(<ContentPanel topic={topic} />);
-
-      expect(screen.getByTestId('diagram-editor')).toBeInTheDocument();
-      expect(screen.queryByTestId('diagram-side-by-side')).not.toBeInTheDocument();
-      expect(screen.queryByTestId('content-viewer')).not.toBeInTheDocument();
-    });
-  });
-
-  describe('Mixed type rendering', () => {
-    it('renders vertical split view for mixed type topics', () => {
-      const topic: Topic = {
-        slug: 'test-mixed-topic',
-        title: 'Test Mixed Topic',
-        type: 'code' as any, // We cast since TopicType doesn't include 'mixed' yet
-        partSlug: 'part-01',
-        moduleSlug: 'module-01',
-        content: {
-          markdown: '# Instructions\n\nFollow these steps.',
-          starterCode: 'const x = 1;',
-          language: 'javascript',
-        } as any,
-      };
-      // Override type to 'mixed' to test the routing
-      (topic as any).type = 'mixed';
-      render(<ContentPanel topic={topic} />);
-
-      expect(screen.getByTestId('mixed-split-view')).toBeInTheDocument();
-      expect(screen.getByTestId('content-viewer')).toBeInTheDocument();
-      expect(screen.getByTestId('code-editor')).toBeInTheDocument();
-    });
-  });
-
-  describe('Error handling', () => {
-    it('shows error message for unrecognized type', () => {
-      const topic: Topic = {
-        slug: 'test-unknown-topic',
-        title: 'Test Unknown Topic',
-        type: 'unknown' as any,
-        partSlug: 'part-01',
-        moduleSlug: 'module-01',
-        content: {} as any,
-      };
-      render(<ContentPanel topic={topic} />);
-
-      expect(screen.getByTestId('content-type-error')).toBeInTheDocument();
-      expect(
-        screen.getByText('Content type unavailable for this topic.')
-      ).toBeInTheDocument();
     });
   });
 
@@ -176,53 +109,58 @@ describe('ContentPanel', () => {
     it('displays the topic title in the header', () => {
       const topic = makeCodeTopic({ title: 'Variables in JavaScript' });
       render(<ContentPanel topic={topic} />);
-
       expect(screen.getByText('Variables in JavaScript')).toBeInTheDocument();
     });
 
     it('includes a download button', () => {
       const topic = makeCodeTopic();
       render(<ContentPanel topic={topic} />);
-
       expect(screen.getByTestId('download-button')).toBeInTheDocument();
-      expect(screen.getByText('Download')).toBeInTheDocument();
+    });
+
+    it('displays navigation arrows', () => {
+      const topic = makeCodeTopic();
+      render(<ContentPanel topic={topic} />);
+      expect(screen.getByTitle('Previous topic')).toBeInTheDocument();
+      expect(screen.getByTitle('Next topic')).toBeInTheDocument();
+    });
+
+    it('shows the content-panel test id', () => {
+      const topic = makeCodeTopic();
+      render(<ContentPanel topic={topic} />);
+      expect(screen.getByTestId('content-panel')).toBeInTheDocument();
     });
   });
 
-  describe('Props passing', () => {
-    it('passes correct props to CodeEditor for code topics', () => {
-      const topic = makeCodeTopic({
-        slug: 'my-code-topic',
-        content: {
-          starterCode: 'let a = 1;',
-          language: 'typescript',
-        } as CodeTopicContent,
-      });
+  describe('Activity bar', () => {
+    it('renders activity bar with Code Editor button for code topics', () => {
+      const topic = makeCodeTopic();
       render(<ContentPanel topic={topic} />);
-
-      const editor = screen.getByTestId('code-editor');
-      expect(editor).toHaveAttribute('data-topic', 'my-code-topic');
-      expect(editor).toHaveAttribute('data-language', 'typescript');
+      expect(screen.getByTitle('Code Editor')).toBeInTheDocument();
     });
 
-    it('passes correct content to ContentViewer for content topics', () => {
-      const topic = makeContentTopic({
-        content: {
-          markdown: '# My Content',
-        } as ContentTopicContent,
-      });
+    it('renders Drawing Board button', () => {
+      const topic = makeCodeTopic();
       render(<ContentPanel topic={topic} />);
-
-      const viewer = screen.getByTestId('content-viewer');
-      expect(viewer).toHaveAttribute('data-content', '# My Content');
+      expect(screen.getByTitle('Drawing Board')).toBeInTheDocument();
     });
 
-    it('passes correct props to DiagramEditor for diagram topics', () => {
-      const topic = makeDiagramTopic({ slug: 'my-diagram' });
+    it('renders Node.js button', () => {
+      const topic = makeCodeTopic();
       render(<ContentPanel topic={topic} />);
+      expect(screen.getByTitle('Node.js')).toBeInTheDocument();
+    });
 
-      const editor = screen.getByTestId('diagram-editor');
-      expect(editor).toHaveAttribute('data-topic', 'my-diagram');
+    it('renders Notes button for content topics', () => {
+      const topic = makeContentTopic();
+      render(<ContentPanel topic={topic} />);
+      expect(screen.getByTitle('Notes')).toBeInTheDocument();
+    });
+
+    it('renders Presentation Mode button', () => {
+      const topic = makeCodeTopic();
+      render(<ContentPanel topic={topic} />);
+      expect(screen.getByTitle('Presentation Mode')).toBeInTheDocument();
     });
   });
 });

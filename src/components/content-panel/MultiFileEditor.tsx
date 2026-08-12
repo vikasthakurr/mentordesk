@@ -387,6 +387,37 @@ export default function MultiFileEditor({
             >
               ↺ Reset
             </button>
+            <button
+              onClick={async () => {
+                const code = getCurrentCode();
+                if (!code?.trim()) return;
+                try {
+                  const res = await fetch('/api/share', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      title: `${topicSlug} - ${activeFile}`,
+                      code,
+                      language: getMonacoLanguage(),
+                    }),
+                  });
+                  const data = await res.json();
+                  if (data.shareId) {
+                    // Use NEXT_PUBLIC_BASE_URL if set, otherwise current origin
+                    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || window.location.origin;
+                    const url = `${baseUrl}/share/${data.shareId}`;
+                    await navigator.clipboard.writeText(url);
+                    alert(`Share link copied!\n${url}`);
+                  }
+                } catch {
+                  alert('Failed to share. Try again.');
+                }
+              }}
+              className="px-2.5 py-1.5 mr-2 text-xs text-gray-400 hover:text-white transition-colors"
+              title="Share current file"
+            >
+              🔗 Share
+            </button>
           </div>
 
           {/* Monaco Editor */}

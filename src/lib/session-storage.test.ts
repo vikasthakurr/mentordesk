@@ -16,12 +16,12 @@ describe('session-storage', () => {
   describe('buildStorageKey', () => {
     it('builds key with correct format', () => {
       const key = buildStorageKey('part-01', 'module-01', 'topic-01', 'code');
-      expect(key).toBe('mern-platform:part-01:module-01:topic-01:code');
+      expect(key).toBe('mern-platform:default:part-01:module-01:topic-01:code');
     });
 
     it('builds key for diagram type', () => {
       const key = buildStorageKey('part-07', 'module-21', 'hld-intro', 'diagram');
-      expect(key).toBe('mern-platform:part-07:module-21:hld-intro:diagram');
+      expect(key).toBe('mern-platform:default:part-07:module-21:hld-intro:diagram');
     });
   });
 

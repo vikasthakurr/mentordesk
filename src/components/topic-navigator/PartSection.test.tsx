@@ -41,9 +41,9 @@ const defaultProps = {
 };
 
 describe('PartSection', () => {
-  it('renders part title with correct format "Part N — [Subject Area]"', () => {
+  it('renders part title with correct format "Part N - [Subject Area]"', () => {
     render(<PartSection {...defaultProps} />);
-    expect(screen.getByText('Part 1 — Web Foundations')).toBeInTheDocument();
+    expect(screen.getByText('Part 1 - Web Foundations')).toBeInTheDocument();
   });
 
   it('displays part-level progress as completed modules / total modules', () => {

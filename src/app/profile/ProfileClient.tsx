@@ -1,7 +1,9 @@
 'use client';
 
+import { useState } from 'react';
 import { signOut } from 'next-auth/react';
 import Link from 'next/link';
+import { useToast } from '@/components/ui/Toast';
 
 interface ProfileProps {
   user: {
@@ -15,6 +17,41 @@ interface ProfileProps {
 }
 
 export default function ProfileClient({ user }: ProfileProps) {
+  const { toast } = useToast();
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [changingPassword, setChangingPassword] = useState(false);
+
+  const handlePasswordChange = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newPassword !== confirmPassword) {
+      toast('Passwords do not match', 'error');
+      return;
+    }
+    if (newPassword.length < 6) {
+      toast('Password must be at least 6 characters', 'error');
+      return;
+    }
+
+    setChangingPassword(true);
+    const res = await fetch('/api/auth/change-password', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ currentPassword, newPassword }),
+    });
+    const data = await res.json();
+    setChangingPassword(false);
+
+    if (res.ok) {
+      toast('Password updated successfully', 'success');
+      setCurrentPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
+    } else {
+      toast(data.error || 'Failed to change password', 'error');
+    }
+  };
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       {/* Header */}
@@ -94,6 +131,45 @@ export default function ProfileClient({ user }: ProfileProps) {
               )}
             </div>
           </div>
+        </div>
+
+        {/* Password Change */}
+        <div className="mt-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-sm">
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">Change Password</h2>
+          <form onSubmit={handlePasswordChange} className="space-y-3">
+            <input
+              type="password"
+              value={currentPassword}
+              onChange={(e) => setCurrentPassword(e.target.value)}
+              placeholder="Current password (leave empty if using Google)"
+              className="w-full px-4 py-2.5 text-sm border border-gray-300 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+            <input
+              type="password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              placeholder="New password (min 6 characters)"
+              required
+              minLength={6}
+              className="w-full px-4 py-2.5 text-sm border border-gray-300 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Confirm new password"
+              required
+              minLength={6}
+              className="w-full px-4 py-2.5 text-sm border border-gray-300 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+            <button
+              type="submit"
+              disabled={changingPassword}
+              className="w-full px-4 py-2.5 text-sm font-medium text-white bg-blue-600 rounded-xl hover:bg-blue-500 transition-colors disabled:opacity-50"
+            >
+              {changingPassword ? 'Updating...' : 'Update Password'}
+            </button>
+          </form>
         </div>
 
         {/* Actions */}

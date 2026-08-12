@@ -9,6 +9,8 @@ import { fetchProgress } from '@/lib/api-client';
 import { getCurrentBatch } from '@/lib/batch';
 import TourGuide from '@/components/ui/TourGuide';
 import ResizeHandle from '@/components/ui/ResizeHandle';
+import KeyboardShortcuts from '@/components/ui/KeyboardShortcuts';
+import CommandPalette from '@/components/ui/CommandPalette';
 import type { Part, Topic } from '@/types';
 
 interface TopicViewClientProps {
@@ -63,6 +65,27 @@ export default function TopicViewClient({
       }
     }
     return list;
+  }, [parts]);
+
+  // Build command palette entries
+  const paletteTopics = useMemo(() => {
+    const entries: { slug: string; title: string; partSlug: string; partTitle: string; moduleSlug: string; moduleTitle: string; type: string }[] = [];
+    for (const part of parts) {
+      for (const mod of part.modules) {
+        for (const t of mod.topics) {
+          entries.push({
+            slug: t.slug,
+            title: t.title,
+            partSlug: part.slug,
+            partTitle: part.title,
+            moduleSlug: mod.slug,
+            moduleTitle: mod.title,
+            type: t.type,
+          });
+        }
+      }
+    }
+    return entries;
   }, [parts]);
 
   const currentIndex = useMemo(() => {
@@ -208,6 +231,8 @@ export default function TopicViewClient({
         />
       </main>
       <TourGuide />
+      <KeyboardShortcuts />
+      <CommandPalette topics={paletteTopics} />
     </div>
   );
 }
